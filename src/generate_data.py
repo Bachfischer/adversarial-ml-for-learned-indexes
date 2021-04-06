@@ -53,4 +53,4 @@ if __name__ == "__main__":
 	# generate_data(Distribution.LOGNORMAL, data_size = 50, filename = "lognormal_50")
 	# generate_data(Distribution.NORMAL, data_size = 50, filename = "normal_50")
 	# generate_data(Distribution.POISSON, data_size = 50, filename = "poisson_50")
-	generate_data(Distribution.RANDOM, data_size = 50, filename = "random_50")
+	generate_data(Distribution.RANDOM, data_size = 500, filename = "random_500")
