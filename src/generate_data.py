@@ -41,7 +41,7 @@ def generate_data(distribution, data_size, filename):
 	elif distribution == Distribution.LOGNORMAL:
 		multiplicant = 10000
 
-	data_path = "./data/" + filename + ".csv"
+	data_path = "../data/" + filename + ".csv"
 	with open(data_path, 'w') as csv_file:
 		csv_writer = csv.writer(csv_file)
 		for index, number in enumerate(data):
