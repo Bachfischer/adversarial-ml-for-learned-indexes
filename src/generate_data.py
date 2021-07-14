@@ -32,7 +32,10 @@ def get_sorted_data(distribution, size):
 	data.sort()
 	return data
 
-def generate_data(distribution, data_size, filename):
+def generate_data(distribution, data_size, filename_prefix):
+
+	filename = filename_prefix + "_" + str(data_size) + ".csv"
+
 	data = get_sorted_data(distribution, data_size)
 
 	multiplicant = 1
@@ -41,16 +44,17 @@ def generate_data(distribution, data_size, filename):
 	elif distribution == Distribution.LOGNORMAL:
 		multiplicant = 10000
 
-	data_path = "../data/" + filename + ".csv"
+	data_path = "../data/" + filename
+
 	with open(data_path, 'w') as csv_file:
 		csv_writer = csv.writer(csv_file)
 		for index, number in enumerate(data):
 			csv_writer.writerow([int(number * multiplicant), index+1])
 
 if __name__ == "__main__":
-	# generate_data(Distribution.BINOMIAL, data_size = 50, filename = "binomial_50")
-	# generate_data(Distribution.EXPONENTIAL, data_size = 50, filename = "exponential_50")
-	# generate_data(Distribution.LOGNORMAL, data_size = 50, filename = "lognormal_50")
-	# generate_data(Distribution.NORMAL, data_size = 50, filename = "normal_50")
-	# generate_data(Distribution.POISSON, data_size = 50, filename = "poisson_50")
-	generate_data(Distribution.RANDOM, data_size = 500, filename = "random_500")
+	# generate_data(Distribution.BINOMIAL, data_size = 50, filename_prefix = "binomial")
+	# generate_data(Distribution.EXPONENTIAL, data_size = 50, filename_prefix = "exponential")
+	# generate_data(Distribution.LOGNORMAL, data_size = 50, filename_prefix = "lognormal")
+	# generate_data(Distribution.NORMAL, data_size = 50, filename_prefix = "normal")
+	# generate_data(Distribution.POISSON, data_size = 50, filename_prefix = "poisson")
+	generate_data(Distribution.RANDOM, data_size = 5000, filename_prefix="random")
