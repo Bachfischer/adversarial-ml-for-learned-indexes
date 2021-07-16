@@ -11,7 +11,7 @@ def downsample_dataset(dataset_filename : str, downsample_factor):
         output_file.write(struct.pack("Q", len(downsampled_keyset)))
         downsampled_keyset.tofile(output_file)
 
-downsample_dataset("wiki", 4096)
+downsample_dataset("wiki", 8192)
 #downsample_dataset("books", 131072)
 #downsample_dataset("osm_cellids", 131072)
 #downsample_dataset("fb", 131072)
