@@ -1,0 +1,15 @@
+Repeating lookup code 1 time(s).
+Using 1 thread(s).
+Only executing indexes matching ALEX
+read 200000000 values from ./data/books_200M_uint64 in 21144 ms (9.45895 M values/s)
+data is unique
+read 1 values from ./data/books_200M_uint64_equality_lookups_1 in 0 ms (inf M values/s)
+read 20000000 values from ./data/books_200M_uint64_inserts_20M in 1047 ms (19.1022 M values/s)
+RESULT: ALEX,1,8588,0,2.32883e+12,4607459616,76398560457,BinarySearch
+RESULT: ALEX,4,18657,422.213,2.36847e+06,1152069800,16928031952,BinarySearch
+RESULT: ALEX,8,4172,329.187,3.03779e+06,576049120,7152820564,BinarySearch
+RESULT: ALEX,16,3071,260.798,3.83439e+06,288101088,2969975053,BinarySearch
+RESULT: ALEX,32,3812,233.282,4.28665e+06,144122592,1314117162,BinarySearch
+RESULT: ALEX,64,3659,241.931,4.1334e+06,72131896,611550734,BinarySearch
+RESULT: ALEX,128,3040,240.902,4.15107e+06,36134824,290916130,BinarySearch
+RESULT: ALEX,256,3282,234.278,4.26843e+06,18073176,127908812,BinarySearch
