@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import operator
 import struct
-
+import concurrent.futures
 
 def read_dataset(dataset_filename : str):
     keyset = np.fromfile("../data/" + dataset_filename, dtype=np.uint64)[1:]
@@ -69,8 +69,6 @@ def compute_rank_for_endpoints(endpoints, keyset):
         computed_rank_for_endpoint.append(int(rank_of_endpoint))
     
     return computed_rank_for_endpoint
-
-
 
 
 def obtain_poisoning_keys(p, keyset, rankset):
@@ -151,19 +149,38 @@ def obtain_poisoning_keys(p, keyset, rankset):
     return poisoning_keys
 
 def perform_poisoning(dataset_filename : str, poisoning_percentage):
-    x, y = read_dataset(dataset_filename + "_ts_1M_uint64")
-    poisoning_keys = obtain_poisoning_keys(p = poisoning_percentage, keyset=x, rankset=y)
+    x, y = read_dataset(dataset_filename)
+    
+    # split x, y into n = 16 parts
+    x = np.split(x, 16)
+    y = np.split(y, 16)
+    futures = []
 
-    x_poisoned = np.append(x, list(poisoning_keys))
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+
+        for i in range(0,16):
+            future = executor.submit(obtain_poisoning_keys, p = poisoning_percentage, keyset = x[i], rankset = y[i])
+            futures.append(future)
+
+
+    # obtain poisoning keys
+    poisoning_keys = []
+    for future in futures:
+        result = future.result()
+        poisoning_keys.append(list(result))
+
+    # concat legitimate keys and poisoning keys
+    x_poisoned = np.append(x, poisoning_keys)
     #y_poisoned = rankdata(x_poisoned)
     x_poisoned = x_poisoned.reshape(-1,1)
 
-    with open("../data/poisoned_" + dataset_filename + "_ts_1M_uint64_" + str(poisoning_percentage), "wb") as output_file:
+    with open("../data/poisoned_" + dataset_filename + str(poisoning_percentage), "wb") as output_file:
         output_file.write(struct.pack("Q", len(x_poisoned)))
         x_poisoned.tofile(output_file)
-    print("Wrote poisoned dataset poisoned_" + str(dataset_filename) + "_ts_1M_uint64_" + str(poisoning_percentage) + " to disk")
+    print("Wrote poisoned dataset poisoned_" + str(dataset_filename) + str(poisoning_percentage) + " to disk")
 
-perform_poisoning("wiki", 0.2)
+
+perform_poisoning("wiki_ts_200M_uint64", 0.1)
 #perform_poisoning("books", 0.2)
 #perform_poisoning("osm_cellids", 0.2)
 #perform_poisoning("fb", 0.2)
