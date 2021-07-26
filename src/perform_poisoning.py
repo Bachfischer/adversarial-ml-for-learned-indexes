@@ -3,7 +3,9 @@ import numpy as np
 import pandas as pd
 import operator
 import struct
+from timeit import default_timer as timer
 import concurrent.futures
+from multiprocessing import cpu_count
 
 def read_dataset(dataset_filename : str):
     keyset = np.fromfile("../data/" + dataset_filename, dtype=np.uint64)[1:]
@@ -41,7 +43,7 @@ def partition_non_occupied_keys_all_in_one(K, P):
     is_in_sequence = False
     for i in range(lower_bound, upper_bound + 1):
         # TODO: We limit the number of endpoints to improve performance
-        if len(endpoints) > 1000:
+        if len(endpoints) > 50:
             return  np.array(endpoints)
         elif (i not in keyset and is_in_sequence is False): # if key i is at start of sequence
             #print("Adding " + str(i) + " to non_occupied_keys")
@@ -81,6 +83,7 @@ def obtain_poisoning_keys(p, keyset, rankset):
     
 
     for j in range(P):
+        print("Current status: " + str(j) + " out of " + str(P) + " poisoning keys generated")
         # Partition the non-occupied keys into subsequences such that each subsequence consists of consecutive non-occupied keys;
         # Extract the endpoints of each subsequence and sort them to construct the new sequence of endpoints S(i), where i <= 2(n + j);
         
@@ -148,18 +151,23 @@ def obtain_poisoning_keys(p, keyset, rankset):
     
     return poisoning_keys
 
-def perform_poisoning(dataset_filename : str, poisoning_percentage):
+def perform_poisoning(dataset_filename : str, poisoning_percentage, ):
     x, y = read_dataset(dataset_filename)
+
+    num_processes = cpu_count()
     
-    # split x, y into n = 16 parts
-    x = np.split(x, 16)
-    y = np.split(y, 16)
+    # split x, y into equal parts
+    x_split = np.split(x, num_processes)
+    y_split = np.split(y, num_processes)
+
+    start = timer()
+
     futures = []
 
-    with concurrent.futures.ThreadPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor() as executor:
 
-        for i in range(0,16):
-            future = executor.submit(obtain_poisoning_keys, p = poisoning_percentage, keyset = x[i], rankset = y[i])
+        for i in range(num_processes):
+            future = executor.submit(obtain_poisoning_keys, p = poisoning_percentage, keyset = x_split[i], rankset = y_split[i])
             futures.append(future)
 
 
@@ -174,13 +182,16 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
     #y_poisoned = rankdata(x_poisoned)
     x_poisoned = x_poisoned.reshape(-1,1)
 
-    with open("../data/poisoned_" + dataset_filename + str(poisoning_percentage), "wb") as output_file:
+    with open("../data/poisoned_" + dataset_filename + "_" + str(poisoning_percentage), "wb") as output_file:
         output_file.write(struct.pack("Q", len(x_poisoned)))
         x_poisoned.tofile(output_file)
-    print("Wrote poisoned dataset poisoned_" + str(dataset_filename) + str(poisoning_percentage) + " to disk")
+    print("Wrote poisoned dataset poisoned_" + str(dataset_filename) + "_" + str(poisoning_percentage) + " to disk")
+    
+    end = timer()
+    print(f'Elapsed time: {end - start}')
 
 
-perform_poisoning("wiki_ts_200M_uint64", 0.1)
+perform_poisoning("wiki_ts_1M_uint64", 0.1)
 #perform_poisoning("books", 0.2)
 #perform_poisoning("osm_cellids", 0.2)
 #perform_poisoning("fb", 0.2)

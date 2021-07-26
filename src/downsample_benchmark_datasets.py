@@ -14,8 +14,10 @@ def downsample_dataset(dataset_filename : str, downsample_factor):
         output_file.write(struct.pack("Q", len(downsampled_keyset)))
         downsampled_keyset.tofile(output_file)
 
-# works fine w/ 16384, 8192
-downsample_dataset("wiki", 1000)
+# downsample_factor = 10000 : 5 seconds
+# downsample_factor = 1000  : 5 minutes
+# downsample_factor = 10    : TBD 
+downsample_dataset("wiki", 10)
 
 #downsample_dataset("books", 131072)
 #downsample_dataset("osm_cellids", 131072)
