@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 import pandas as pd
 import operator
@@ -26,8 +25,8 @@ def rankdata(array):
     inv[sorter] = np.arange(sorter.size, dtype=np.intp)
     return inv + 1
 
-# Extracts non-occupied keys for a given sequence
-def partition_non_occupied_keys_all_in_one(K, P):
+# Extract non-occupied keys for a given sequence of legitimate and poisoning keys
+def partition_non_occupied_keys(K, P):
     keyset = np.append(K, list(P))
     keyset = np.sort(keyset)
     
@@ -88,11 +87,11 @@ def obtain_poisoning_keys(p, keyset, rankset):
         # Extract the endpoints of each subsequence and sort them to construct the new sequence of endpoints S(i), where i <= 2(n + j);
         
         # S: endpoints
-        S = partition_non_occupied_keys_all_in_one(keyset, poisoning_keys)
+        S = partition_non_occupied_keys(keyset, poisoning_keys)
         #print("Length of endpoints: ", len(S))
         
         # TODO: Investigate impact - we downsample the list of endpoints to max n = 1000
-        # Limit number of endpoints to n = 1000
+        # Limit number of endpoints to n = 50
         S = np.random.choice(S, size = 50)
 
         # Compute the rank that key S(i) would have if it was inserted in K ∪ P and assign this rank as the i-th element of the new sequence T (i), where i <= 2(n + j) ;
@@ -151,7 +150,9 @@ def obtain_poisoning_keys(p, keyset, rankset):
     
     return poisoning_keys
 
-def perform_poisoning(dataset_filename : str, poisoning_percentage, ):
+def perform_poisoning(dataset_filename : str, poisoning_percentage):
+
+    # the SOSD benchmark datasets are already sorted
     x, y = read_dataset(dataset_filename)
 
     num_processes = cpu_count()
@@ -190,8 +191,16 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage, ):
     end = timer()
     print(f'Elapsed time: {end - start}')
 
+def main():
+    # generate 20k poisoning keys
+    perform_poisoning("wiki_ts_200M_uint64", 0.0001)
+    #perform_poisoning("wiki_ts_1M_uint64", 0.1)
 
-perform_poisoning("wiki_ts_1M_uint64", 0.1)
-#perform_poisoning("books", 0.2)
-#perform_poisoning("osm_cellids", 0.2)
-#perform_poisoning("fb", 0.2)
+    #perform_poisoning("books", 0.2)
+    #perform_poisoning("osm_cellids", 0.2)
+    #perform_poisoning("fb", 0.2)
+
+if __name__ == '__main__':
+    main()
+
+
