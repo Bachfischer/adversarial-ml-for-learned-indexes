@@ -1,0 +1,36 @@
+Repeating lookup code 1 time(s).
+Using 1 thread(s).
+Only executing indexes matching BTree
+read 200020000 values from ./data/poisoned_wiki_ts_200M_uint64 in 1345 ms (148.714 M values/s)
+data contains duplicates
+read 18000000 values from ./data/poisoned_wiki_ts_200M_uint64_equality_lookups_18M in 1977 ms (9.1047 M values/s)
+read 2000000 values from ./data/poisoned_wiki_ts_200M_uint64_inserts_2M in 37 ms (54.0541 M values/s)
+BTree,32,793.807,333.715,196.881,3.12469e+06,194483368,103908029,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,1,1003.12,690.519,221.233,1.55378e+06,3791783136,3507592925,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,4,910.374,551.85,214.932,1.92991e+06,1006983472,785315131,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,16,801.472,404.741,203.397,2.60006e+06,310614520,126153632,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,64,783.415,262.143,174.426,3.94677e+06,136372904,24386176,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,128,778.072,223.441,176.009,4.57251e+06,107295192,12300375,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,512,771.576,127.953,175.588,7.53488e+06,85326960,2859790,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,1024,798.512,102.613,170.03,9.14458e+06,81645320,1471337,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,4096,862.811,68.8443,176.893,1.2555e+07,78836128,335877,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,16384,989.299,54.4239,164.943,1.52728e+07,78100368,86507,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,65536,1105.22,43.1368,166.939,1.80125e+07,77894696,31685,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+BTree,262144,1177.98,31.9739,166.007,2.20375e+07,77834920,12563,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+Repeating lookup code 1 time(s).
+Using 1 thread(s).
+Only executing indexes matching DPGM
+read 200020000 values from ./data/poisoned_wiki_ts_200M_uint64 in 1351 ms (148.053 M values/s)
+data contains duplicates
+read 18000000 values from ./data/poisoned_wiki_ts_200M_uint64_equality_lookups_18M in 236 ms (76.2712 M values/s)
+read 2000000 values from ./data/poisoned_wiki_ts_200M_uint64_inserts_2M in 13 ms (153.846 M values/s)
+DynamicPGM,16,691.015,448.857,59.5445,2.43947e+06,1538847881,5540819437,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,4,694.107,425.459,59.3083,2.57173e+06,1544893581,6101251246,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,8,670.914,430.235,63.0289,2.5412e+06,1540282481,5841794358,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,32,733.591,493.506,63.2292,2.21986e+06,1538350481,5673561511,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,64,765.083,540.363,63.4533,2.02975e+06,1538149201,5762949029,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,256,842.215,617.049,59.062,1.78174e+06,1537991281,5898965697,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,1024,988.948,752.075,59.4588,1.46453e+06,1537938681,6176329866,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,2048,1049.78,808.334,63.3016,1.36271e+06,1537914201,5594476495,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,4096,1115.5,870.772,59.8581,1.26633e+06,1537908981,5146298628,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
+DynamicPGM,8192,1178.81,945.741,63.819,1.16611e+06,1537907401,5269129191,BinarySearch,./data/poisoned_wiki_ts_200M_uint64
