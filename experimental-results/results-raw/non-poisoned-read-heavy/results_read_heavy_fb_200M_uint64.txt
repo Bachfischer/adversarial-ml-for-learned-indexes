@@ -1,10 +1,9 @@
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching ALEX
-read 200000000 values from ./data/fb_200M_uint64 in 7686 ms (26.0213 M values/s)
+read 200000000 values from ./data/fb_200M_uint64 in 4127 ms (48.4614 M values/s)
 data is unique
-read 18000000 values from ./data/fb_200M_uint64_equality_lookups_18M in 2057 ms (8.75061 M values/s)
+read 18000000 values from ./data/fb_200M_uint64_equality_lookups_18M in 1995 ms (9.02256 M values/s)
 read 2000000 values from ./data/fb_200M_uint64_inserts_2M in 38 ms (52.6316 M values/s)
-RESULT: ALEX,1,1248.3,0,890097,4683877560,149555341058,BinarySearch
-RESULT: ALEX,4,1261,289.445,859220,1186030728,46379578179,BinarySearch
-RESULT: ALEX,8,1305.93,237.327,833977,599695416,19912799052,BinarySearch
+ALEX,1,1013.38,839.38,236.13,1.28361e+06,4709117424,144483863625,BinarySearch,./data/fb_200M_uint64
+ALEX,4,968.395,673.267,143.839,1.61206e+06,1208436208,45759284381,BinarySearch,./data/fb_200M_uint64

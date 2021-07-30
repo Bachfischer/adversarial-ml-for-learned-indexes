@@ -1,44 +1,43 @@
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching ALEX
-read 200000000 values from ./data/wiki_ts_200M_uint64 in 21116 ms (9.47149 M values/s)
+read 200000000 values from ./data/wiki_ts_200M_uint64 in 21181 ms (9.44242 M values/s)
 data contains duplicates
-read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 95 ms (21.0526 M values/s)
-read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 934 ms (19.2719 M values/s)
-RESULT: ALEX,1,678.645,0,1.47352e+07,4613272376,99999196469,BinarySearch
+read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 97 ms (20.6186 M values/s)
+read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 927 ms (19.4175 M values/s)
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching BTree
-read 200000000 values from ./data/wiki_ts_200M_uint64 in 1532 ms (130.548 M values/s)
+read 200000000 values from ./data/wiki_ts_200M_uint64 in 1614 ms (123.916 M values/s)
 data contains duplicates
-read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 26 ms (76.9231 M values/s)
-read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 365 ms (49.3151 M values/s)
-RESULT: BTree,32,985.11,0,1.01511e+07,116016232,249823374,BinarySearch
-RESULT: BTree,1,1570.04,539.606,1.55606e+06,3712500896,4281294090,BinarySearch
-RESULT: BTree,4,1400.39,706.455,1.28891e+06,928126304,412566623,BinarySearch
-RESULT: BTree,16,1192.46,631.251,1.45482e+06,232032112,108073894,BinarySearch
-RESULT: BTree,64,1004.84,504.618,1.80297e+06,58008568,26620498,BinarySearch
-RESULT: BTree,128,1010.21,511.333,1.78183e+06,29004872,13804452,BinarySearch
-RESULT: BTree,512,953.777,515.656,1.78741e+06,7251896,2859310,BinarySearch
-RESULT: BTree,1024,1038.74,484.047,1.85351e+06,3626672,1457576,BinarySearch
-RESULT: BTree,4096,1146.93,524.169,1.70519e+06,906864,328341,BinarySearch
-RESULT: BTree,16384,1372.33,521.072,1.64963e+06,227048,90512,BinarySearch
-RESULT: BTree,65536,1528.82,539.51,1.56632e+06,57096,36794,BinarySearch
-RESULT: BTree,262144,1790.9,545.701,1.49205e+06,14608,16827,BinarySearch
+read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 29 ms (68.9655 M values/s)
+read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 124 ms (145.161 M values/s)
+BTree,32,898.724,342.821,413.079,2.46273e+06,739920376,110864545,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,1,1232.18,815.126,528.523,1.79474e+06,4458736440,3341689868,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,4,1111.98,646.222,457.623,2.09871e+06,1607641480,391001384,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,16,955.319,409.681,415.234,2.41151e+06,868741976,98810358,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,64,893.699,271.902,393.284,2.62367e+06,673109640,26174141,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,128,861.631,218.734,386.868,2.7023e+06,637488464,13390906,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,512,866.906,118.187,369.161,2.90644e+06,608520520,2852455,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,1024,919.137,104.413,379.029,2.84441e+06,603270136,1400600,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,4096,964.906,70.6326,383.414,2.83981e+06,599074432,348577,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,16384,1147.82,52.6579,374.473,2.92148e+06,598196200,87558,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,65536,1293.5,41.6376,375.827,2.92049e+06,597791808,53449,BinarySearch,./data/wiki_ts_200M_uint64
+BTree,262144,1405.49,32.2191,387.674,2.83987e+06,597781344,15110,BinarySearch,./data/wiki_ts_200M_uint64
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching DPGM
-read 200000000 values from ./data/wiki_ts_200M_uint64 in 1424 ms (140.449 M values/s)
+read 200000000 values from ./data/wiki_ts_200M_uint64 in 1533 ms (130.463 M values/s)
 data contains duplicates
-read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 24 ms (83.3333 M values/s)
-read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 126 ms (142.857 M values/s)
-RESULT: DynamicPGM,16,1009.03,0,9.91054e+06,1538371662,6025482238,BinarySearch
-RESULT: DynamicPGM,4,1012,164.05,4.01857e+06,1544421402,6250788551,BinarySearch
-RESULT: DynamicPGM,8,959.57,172.56,3.97992e+06,1539807142,6090029768,BinarySearch
-RESULT: DynamicPGM,32,1010.08,167.598,3.97068e+06,1537873982,5629871657,BinarySearch
-RESULT: DynamicPGM,64,1092.56,164.299,3.88916e+06,1537672382,6048078757,BinarySearch
-RESULT: DynamicPGM,256,1152.91,159.467,3.86382e+06,1537514822,6078716457,BinarySearch
-RESULT: DynamicPGM,1024,1444.34,159.441,3.47305e+06,1537462382,6638752691,BinarySearch
-RESULT: DynamicPGM,2048,1422.06,162.97,3.46166e+06,1537438002,5560192565,BinarySearch
-RESULT: DynamicPGM,4096,1645.92,169.253,3.15538e+06,1537432822,5613277713,BinarySearch
-RESULT: DynamicPGM,8192,1648.9,167.638,3.16692e+06,1537431282,5283338269,BinarySearch
+read 2000000 values from ./data/wiki_ts_200M_uint64_equality_lookups_2M in 28 ms (71.4286 M values/s)
+read 18000000 values from ./data/wiki_ts_200M_uint64_inserts_18M in 121 ms (148.76 M values/s)
+DynamicPGM,16,884.015,534.117,133.729,5.7548e+06,1579538452,5624090678,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,4,886.165,495.901,143.884,5.58392e+06,1585772272,6087317447,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,8,864.915,518.054,147.149,5.42771e+06,1581031112,5876854265,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,32,911.346,578.391,137.95,5.49467e+06,1579023352,5669966122,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,64,930.05,620.842,132.744,5.508e+06,1578817392,5745211176,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,256,1010.25,710.97,123.408,5.48955e+06,1578657912,5902348111,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,1024,1186.18,1371.66,308.494,2.41074e+06,1578605052,6166860915,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,2048,1343.76,934.339,141.944,4.52112e+06,1578580572,5702332973,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,4096,1384.73,1030.65,138.504,4.39138e+06,1578575352,5160125533,BinarySearch,./data/wiki_ts_200M_uint64
+DynamicPGM,8192,1452.76,1094.21,150.573,4.08269e+06,1578573772,5315867526,BinarySearch,./data/wiki_ts_200M_uint64

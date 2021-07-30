@@ -1,53 +1,53 @@
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching ALEX
-read 200000000 values from ./data/osm_cellids_200M_uint64 in 21451 ms (9.32357 M values/s)
+read 200000000 values from ./data/osm_cellids_200M_uint64 in 1395 ms (143.369 M values/s)
 data is unique
-read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 5219 ms (3.83215 M values/s)
-RESULT: ALEX,1,1205.73,829370,4680388672,132237708857,BinarySearch
-RESULT: ALEX,4,1063.59,940214,1194629024,32151497854,BinarySearch
-RESULT: ALEX,8,1048.82,953451,612210912,16235710904,BinarySearch
-RESULT: ALEX,16,898.178,1.11336e+06,314106984,8632284773,BinarySearch
-RESULT: ALEX,32,921.851,1.08477e+06,165966424,4526810556,BinarySearch
-RESULT: ALEX,64,908.977,1.10014e+06,88211416,2272635669,BinarySearch
-RESULT: ALEX,128,768.574,1.30111e+06,49303744,1238528591,BinarySearch
-RESULT: ALEX,256,778.026,1.2853e+06,27636192,622696566,BinarySearch
-RESULT: ALEX,512,793.283,1.26058e+06,16503224,354431158,BinarySearch
-RESULT: ALEX,1024,818.124,1.22231e+06,10427296,212412839,BinarySearch
-RESULT: ALEX,2048,894.5,1.11794e+06,5792904,106927064,BinarySearch
-RESULT: ALEX,4096,960.183,1.04147e+06,3541960,69579251,BinarySearch
-RESULT: ALEX,8192,1095.16,913106,2176256,51656217,BinarySearch
+read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 574 ms (34.8432 M values/s)
+ALEX,1,795.825,597.453,1.67377e+06,4680388672,126809868777,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,4,727.539,464.235,2.15408e+06,1194629024,31802510330,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,8,729.681,390.038,2.56386e+06,612210912,16102156996,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,16,754.382,324.139,3.0851e+06,314106984,8529611757,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,32,825.11,262.304,3.81237e+06,165966424,4459352788,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,64,814.745,226.099,4.42283e+06,88211416,2238973187,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,128,777.797,185.934,5.37824e+06,49303744,1210352168,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,256,752.043,161.284,6.20026e+06,27636192,617351091,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,512,770.116,124.474,8.03377e+06,16503224,346637586,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,1024,821.067,98.5601,1.01461e+07,10427296,211093851,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,2048,864.069,84.4624,1.18396e+07,5792904,105025327,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,4096,914.365,65.0638,1.53695e+07,3541960,69316067,BinarySearch,./data/osm_cellids_200M_uint64
+ALEX,8192,972.785,54.0426,1.85039e+07,2176256,49337857,BinarySearch,./data/osm_cellids_200M_uint64
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching BTree
-read 200000000 values from ./data/osm_cellids_200M_uint64 in 1803 ms (110.926 M values/s)
+read 200000000 values from ./data/osm_cellids_200M_uint64 in 1530 ms (130.719 M values/s)
 data is unique
-read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 346 ms (57.8035 M values/s)
-RESULT: BTree,32,947.272,1.05566e+06,116016232,108214763,BinarySearch
-RESULT: BTree,1,1179.51,847813,3712500896,3708828497,BinarySearch
-RESULT: BTree,4,1050.56,951877,928126304,816138391,BinarySearch
-RESULT: BTree,16,906.744,1.10285e+06,232032112,163516502,BinarySearch
-RESULT: BTree,64,903.791,1.10645e+06,58008568,23717241,BinarySearch
-RESULT: BTree,128,922.407,1.08412e+06,29004872,12489697,BinarySearch
-RESULT: BTree,512,966.19,1.03499e+06,7251896,2897792,BinarySearch
-RESULT: BTree,1024,1022.64,977857,3626672,1429758,BinarySearch
-RESULT: BTree,4096,1151.46,868461,906864,332704,BinarySearch
-RESULT: BTree,16384,1325.68,754331,227048,84937,BinarySearch
-RESULT: BTree,65536,1458.8,685497,57096,32339,BinarySearch
-RESULT: BTree,262144,1559.12,641388,14608,11675,BinarySearch
+read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 264 ms (75.7576 M values/s)
+BTree,32,809.849,332.139,3.01079e+06,116016232,108029584,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,1,990.075,688.184,1.4531e+06,3712500896,3538037720,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,4,921.274,562.918,1.77646e+06,928126304,837498934,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,16,830.604,403.273,2.47971e+06,232032112,165285923,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,64,817.62,261.368,3.82603e+06,58008568,23570362,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,128,816.661,231.341,4.32263e+06,29004872,12262907,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,512,829.652,121.709,8.2163e+06,7251896,2874376,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,1024,861.127,104.937,9.52952e+06,3626672,1475791,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,4096,941.807,72.2519,1.38405e+07,906864,328357,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,16384,1104.51,52.9739,1.88772e+07,227048,84205,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,65536,1255.6,42.3127,2.36335e+07,57096,30815,BinarySearch,./data/osm_cellids_200M_uint64
+BTree,262144,1309.58,32.2986,3.09611e+07,14608,12407,BinarySearch,./data/osm_cellids_200M_uint64
 Repeating lookup code 1 time(s).
 Using 1 thread(s).
 Only executing indexes matching DPGM
-read 200000000 values from ./data/osm_cellids_200M_uint64 in 1430 ms (139.86 M values/s)
+read 200000000 values from ./data/osm_cellids_200M_uint64 in 1518 ms (131.752 M values/s)
 data is unique
-read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 332 ms (60.241 M values/s)
-RESULT: DynamicPGM,16,1036.39,964885,3427793935,15040983481,BinarySearch
-RESULT: DynamicPGM,4,1087.59,919463,3518835575,16779456960,BinarySearch
-RESULT: DynamicPGM,8,1007.22,992834,3457373255,15575058954,BinarySearch
-RESULT: DynamicPGM,32,1074.6,930579,3413611055,13934186003,BinarySearch
-RESULT: DynamicPGM,64,1058.64,944608,3406736235,13743670922,BinarySearch
-RESULT: DynamicPGM,256,1127.28,887088,3401681615,12891680001,BinarySearch
-RESULT: DynamicPGM,1024,1222.57,817950,3400433375,12690209870,BinarySearch
-RESULT: DynamicPGM,2048,1342.72,744756,3400221235,12413603906,BinarySearch
-RESULT: DynamicPGM,4096,1413.83,707298,3400114415,12550108757,BinarySearch
-RESULT: DynamicPGM,8192,1577.68,633844,3400059655,12355891525,BinarySearch
+read 20000000 values from ./data/osm_cellids_200M_uint64_equality_lookups_20M in 262 ms (76.3359 M values/s)
+DynamicPGM,16,934.495,650.374,1.53758e+06,3427793935,14480643196,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,4,925.732,648.153,1.54285e+06,3518835575,16475681211,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,8,906.377,641.107,1.5598e+06,3457373255,15190671884,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,32,927.541,663.996,1.50603e+06,3413611055,13784454087,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,64,943.891,693.681,1.44158e+06,3406736235,13214058316,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,256,984.251,727.241,1.37506e+06,3401681615,12655907534,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,1024,1074.87,819.572,1.22015e+06,3400433375,12299123407,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,2048,1139.06,878.105,1.13882e+06,3400221235,12230921565,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,4096,1230.18,972.532,1.02824e+06,3400114415,12048068867,BinarySearch,./data/osm_cellids_200M_uint64
+DynamicPGM,8192,1340.25,1068.42,935962,3400059655,12077246404,BinarySearch,./data/osm_cellids_200M_uint64
