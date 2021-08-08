@@ -42,7 +42,7 @@ def partition_non_occupied_keys(K, P):
     is_in_sequence = False
     for i in range(lower_bound, upper_bound + 1):
         # TODO: We limit the number of endpoints to improve performance
-        if len(endpoints) > 50:
+        if len(endpoints) > 100:
             return  np.array(endpoints)
         elif (i not in keyset and is_in_sequence is False): # if key i is at start of sequence
             #print("Adding " + str(i) + " to non_occupied_keys")
@@ -176,13 +176,20 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
     poisoning_keys = []
     for future in futures:
         result = future.result()
-        poisoning_keys.append(list(result))
+        poisoning_keys.extend(result)
 
+    #x, y = read_dataset(dataset_filename)
+    print("Length of legitimate key set: ", len(x))
+    print("Length of poisoned key set: ", len(poisoning_keys))    
     # concat legitimate keys and poisoning keys
-    x_poisoned = np.append(x, poisoning_keys)
-    #y_poisoned = rankdata(x_poisoned)
-    x_poisoned = x_poisoned.reshape(-1,1)
+    x_poisoned = []
+    x_poisoned.extend(np.ravel(x))
+    x_poisoned.extend(poisoning_keys)
+    x_poisoned.sort()
+    x_poisoned = np.array(x_poisoned, dtype=np.uint64)
 
+    #y_poisoned = rankdata(x_poisoned)
+    
     with open("../data/poisoned_" + dataset_filename + "_" + str(poisoning_percentage), "wb") as output_file:
         output_file.write(struct.pack("Q", len(x_poisoned)))
         x_poisoned.tofile(output_file)
@@ -192,13 +199,14 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
     print(f'Elapsed time: {end - start}')
 
 def main():
-    # generate 20k poisoning keys
+    # generate 20k poisoning keys (25 cores - 800 keys each)
     perform_poisoning("wiki_ts_200M_uint64", 0.0001)
-    #perform_poisoning("wiki_ts_1M_uint64", 0.1)
+    #perform_poisoning("wiki_ts_1M_uint64", 0.01)
 
-    #perform_poisoning("books", 0.2)
-    #perform_poisoning("osm_cellids", 0.2)
-    #perform_poisoning("fb", 0.2)
+    #perform_poisoning("osm_cellids_200M_uint64", 0.0001)
+    #perform_poisoning("fb_200M_uint64", 0.0001)
+    #perform_poisoning("books_200M_uint64", 0.0001)
+
 
 if __name__ == '__main__':
     main()
