@@ -180,17 +180,13 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
 
     #x, y = read_dataset(dataset_filename)
     print("Length of legitimate key set: ", len(x))
-    print(np.ravel(x))
-    print("Length of poisoned key set: ", len(poisoning_keys))
-    print(poisoning_keys)
-    
+    print("Length of poisoned key set: ", len(poisoning_keys))    
     # concat legitimate keys and poisoning keys
     x_poisoned = []
     x_poisoned.extend(np.ravel(x))
     x_poisoned.extend(poisoning_keys)
     x_poisoned.sort()
     x_poisoned = np.array(x_poisoned, dtype=np.uint64)
-    print(x_poisoned)
 
     #y_poisoned = rankdata(x_poisoned)
     
@@ -204,8 +200,8 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
 
 def main():
     # generate 20k poisoning keys (25 cores - 800 keys each)
-    #perform_poisoning("wiki_ts_200M_uint64", 0.0001)
-    perform_poisoning("wiki_ts_1M_uint64", 0.01)
+    perform_poisoning("wiki_ts_200M_uint64", 0.0001)
+    #perform_poisoning("wiki_ts_1M_uint64", 0.01)
 
     #perform_poisoning("osm_cellids_200M_uint64", 0.0001)
     #perform_poisoning("fb_200M_uint64", 0.0001)
