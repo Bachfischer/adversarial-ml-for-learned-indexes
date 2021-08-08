@@ -155,7 +155,8 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
     # the SOSD benchmark datasets are already sorted
     x, y = read_dataset(dataset_filename)
 
-    num_processes = cpu_count()
+    #num_processes = cpu_count()
+    num_processes = 25
     
     # split x, y into equal parts
     x_split = np.split(x, num_processes)
