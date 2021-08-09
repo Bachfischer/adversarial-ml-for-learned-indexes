@@ -7,6 +7,9 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/sosd_benchmark
 git pull
 
+Configuration for SOSD Benchmark: e2-standard-8
+Configuration for Poisoning attack: c2-standard-30
+
 Query benchmark:
 `./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_10M --pareto --only ALEX`
 `./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_10M --pareto --only BTree`
