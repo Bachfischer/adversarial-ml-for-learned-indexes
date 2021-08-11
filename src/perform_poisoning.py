@@ -21,8 +21,8 @@ def rankdata(array):
     algo = 'mergesort'
     sorter = np.argsort(array, kind=algo)
 
-    inv = np.empty(sorter.size, dtype=np.intp)
-    inv[sorter] = np.arange(sorter.size, dtype=np.intp)
+    inv = np.empty(sorter.size, dtype=np.uint64)
+    inv[sorter] = np.arange(sorter.size, dtype=np.uint64)
     return inv + 1
 
 # Extract non-occupied keys for a given sequence of legitimate and poisoning keys
@@ -201,11 +201,14 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
 
 def main():
     # generate 20k poisoning keys (25 cores - 800 keys each)
-    perform_poisoning("wiki_ts_200M_uint64", 0.0001)
-    #perform_poisoning("wiki_ts_1M_uint64", 0.01)
+    #perform_poisoning("wiki_ts_200M_uint64", 0.0001)
+    perform_poisoning("wiki_ts_1M_uint64", 0.01)
 
     #perform_poisoning("osm_cellids_200M_uint64", 0.0001)
+    
     #perform_poisoning("fb_200M_uint64", 0.0001)
+    #perform_poisoning("fb_1M_uint64", 0.01)
+
     #perform_poisoning("books_200M_uint64", 0.0001)
 
 
