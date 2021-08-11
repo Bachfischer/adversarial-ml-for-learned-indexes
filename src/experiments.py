@@ -33,4 +33,5 @@ def rankdata(array):
     inv[sorter] = np.arange(sorter.size, dtype=np.intp)
     return inv + 1
 
-sort_dataset("../data/poisoned_wiki_ts_200M_uint64")
+#sort_dataset("../data/poisoned_wiki_ts_200M_uint64")
+#sort_dataset("../data/poisoned_fb_200M_uint64")
