@@ -133,8 +133,12 @@ def obtain_poisoning_keys(p, keyset, rankset):
             delta_S[i] = S[i+1] - S[i] 
 
             M_K[i] = M_K[i-1] + delta_S[i] / (n) 
+            #print(M_K_square[i-1])
+            #print(S[i])
+            #print(delta_S[i])
+            #print( (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
             M_K_square[i] = M_K_square[i-1] + (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) 
-
+            
             M_R[i] = (n + 2) / 2
             M_R_square[i] = ((n+2)*(2*n+3)) / 6
             M_KR[i] = M_KR[i-1] + ( T[i-1] * delta_S[i]) / (n + 1)
@@ -145,7 +149,7 @@ def obtain_poisoning_keys(p, keyset, rankset):
 
         # get argmax of items in L
         optimal_key_index = max(L.items(), key=operator.itemgetter(1))[0]
-        
+        #print("Generated poisoning key: ", S[optimal_key_index])
         poisoning_keys.add(S[optimal_key_index])
     
     return poisoning_keys
@@ -202,9 +206,9 @@ def perform_poisoning(dataset_filename : str, poisoning_percentage):
 def main():
     # generate 20k poisoning keys (25 cores - 800 keys each)
     #perform_poisoning("wiki_ts_200M_uint64", 0.0001)
-    perform_poisoning("wiki_ts_1M_uint64", 0.01)
+    #perform_poisoning("wiki_ts_1M_uint64", 0.01)
 
-    #perform_poisoning("osm_cellids_200M_uint64", 0.0001)
+    perform_poisoning("osm_cellids_200M_uint64", 0.0001)
     
     #perform_poisoning("fb_200M_uint64", 0.0001)
     #perform_poisoning("fb_1M_uint64", 0.01)
