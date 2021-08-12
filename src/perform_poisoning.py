@@ -54,7 +54,7 @@ def partition_non_occupied_keys(K, P):
         else: 
             is_in_sequence = False
         
-    return np.array(endpoints)
+    return np.array(endpoints, dtype=np.uint64)
 
 # Compute the rank that key S(i) would have if it was inserted in K ∪ P and assign this rank as the i-th element of the new sequence
 def compute_rank_for_endpoints(endpoints, keyset):
