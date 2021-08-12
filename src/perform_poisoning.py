@@ -38,7 +38,7 @@ def partition_non_occupied_keys(K, P):
     # convert to set to speed up lookup
     keyset = set(keyset)
     
-    endpoints = []
+    endpoints = set()
     is_in_sequence = False
     for i in range(lower_bound, upper_bound + 1):
         # TODO: We limit the number of endpoints to improve performance
@@ -47,10 +47,10 @@ def partition_non_occupied_keys(K, P):
         elif (i not in keyset and is_in_sequence is False): # if key i is at start of sequence
             #print("Adding " + str(i) + " to non_occupied_keys")
             is_in_sequence = True
-            endpoints.append(i)
+            endpoints.add(i)
         elif i not in keyset and is_in_sequence is True and (i+1) in keyset: # if key i is at end of sequence
             #print("Adding " + str(i) + " to non_occupied_keys because " + str(i+1) + " is not in keyset")
-            endpoints.append(i)
+            endpoints.add(i)
         else: 
             is_in_sequence = False
         
