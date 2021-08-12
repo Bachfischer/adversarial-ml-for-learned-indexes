@@ -43,7 +43,7 @@ def partition_non_occupied_keys(K, P):
     for i in range(lower_bound, upper_bound + 1):
         # TODO: We limit the number of endpoints to improve performance
         if len(endpoints) > 100:
-            return  np.array(endpoints)
+            return  np.array(list(endpoints), dtype=np.uint64)
         elif (i not in keyset and is_in_sequence is False): # if key i is at start of sequence
             #print("Adding " + str(i) + " to non_occupied_keys")
             is_in_sequence = True
@@ -54,7 +54,7 @@ def partition_non_occupied_keys(K, P):
         else: 
             is_in_sequence = False
         
-    return np.array(endpoints, dtype=np.uint64)
+    return np.array(list(endpoints), dtype=np.uint64)
 
 # Compute the rank that key S(i) would have if it was inserted in K ∪ P and assign this rank as the i-th element of the new sequence
 def compute_rank_for_endpoints(endpoints, keyset):
@@ -88,8 +88,6 @@ def obtain_poisoning_keys(p, keyset, rankset):
         
         # S: endpoints
         S = partition_non_occupied_keys(keyset, poisoning_keys)
-        # Convert set to list
-        S = list(S)
         #print("Length of endpoints: ", len(S))
         
         # TODO: Investigate impact - we downsample the list of endpoints to max n = 1000
@@ -117,16 +115,16 @@ def obtain_poisoning_keys(p, keyset, rankset):
         # Calculate M_K(1), M_R(1) etc.
         # insert first potential poisoning key
         current_keyset = np.append(keyset, S[0])
-        M_K[0] = np.mean(current_keyset, dtype=np.float128)
+        M_K[0] = np.mean(current_keyset)
 
         current_rankset = np.append(rankset, T[0])
-        M_R[0] = np.mean(current_rankset, dtype=np.float128)
+        M_R[0] = np.mean(current_rankset)
 
-        M_K_square[0] = np.mean(current_keyset**2, dtype=np.float128)
+        M_K_square[0] = np.mean(current_keyset**2)
 
-        M_R_square[0] = np.mean(current_rankset**2, dtype=np.float128)
+        M_R_square[0] = np.mean(current_rankset**2)
 
-        M_KR[0] = np.mean(current_keyset*current_rankset, dtype=np.float128)
+        M_KR[0] = np.mean(current_keyset*current_rankset)
 
         nominator = (M_KR[0] - (M_K[0] * M_R[0]))**2
         denominator = M_K_square[0] - (M_K[0])**2
@@ -137,18 +135,10 @@ def obtain_poisoning_keys(p, keyset, rankset):
             delta_S[i] = S[i+1] - S[i] 
 
             M_K[i] = M_K[i-1] + delta_S[i] / (n) 
-            #print("M_K_square: ", M_K_square[i-1])
+            print("M_K_square: ", M_K_square[i-1])
             print("S[i]: ", S[i])
             print("delta_S[i]: ", delta_S[i])
-            #print("RHS: ", (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
-            RHS_1 = (( 2 * S[i] + delta_S[i]) * delta_S[i])
-            RHS_2 = (n + 1)
-            print("RHS_1: ", RHS_1)
-            print("RHS_1: ", RHS_2)
-
-            RHS = np.float128(RHS_1 / RHS_2)
-            print(RHS)
-            M_K_square[i] = M_K_square[i-1] + RHS
+            M_K_square[i] = M_K_square[i-1] + ( (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
             
             M_R[i] = (n + 2) / 2
             M_R_square[i] = ((n+2)*(2*n+3)) / 6
