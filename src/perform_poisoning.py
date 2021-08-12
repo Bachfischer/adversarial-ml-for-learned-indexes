@@ -88,6 +88,8 @@ def obtain_poisoning_keys(p, keyset, rankset):
         
         # S: endpoints
         S = partition_non_occupied_keys(keyset, poisoning_keys)
+        # Convert set to list
+        S = list(S)
         #print("Length of endpoints: ", len(S))
         
         # TODO: Investigate impact - we downsample the list of endpoints to max n = 1000
@@ -141,8 +143,8 @@ def obtain_poisoning_keys(p, keyset, rankset):
             #print("RHS: ", (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
             RHS_1 = (( 2 * S[i] + delta_S[i]) * delta_S[i])
             RHS_2 = (n + 1)
-            print(RHS_1)
-            print(RHS_2)
+            print("RHS_1: ", RHS_1)
+            print("RHS_1: ", RHS_2)
 
             RHS = np.float128(RHS_1 / RHS_2)
             print(RHS)
