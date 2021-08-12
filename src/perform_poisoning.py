@@ -93,6 +93,8 @@ def obtain_poisoning_keys(p, keyset, rankset):
         # TODO: Investigate impact - we downsample the list of endpoints to max n = 1000
         # Limit number of endpoints to n = 50
         S = np.random.choice(S, size = 50)
+        # Sort S to make it continuously increasing
+        S = np.sort(S)
 
         # Compute the rank that key S(i) would have if it was inserted in K ∪ P and assign this rank as the i-th element of the new sequence T (i), where i <= 2(n + j) ;
         # T: list_rank
@@ -113,16 +115,16 @@ def obtain_poisoning_keys(p, keyset, rankset):
         # Calculate M_K(1), M_R(1) etc.
         # insert first potential poisoning key
         current_keyset = np.append(keyset, S[0])
-        M_K[0] = np.mean(current_keyset, dtype=np.float64)
+        M_K[0] = np.mean(current_keyset, dtype=np.float128)
 
         current_rankset = np.append(rankset, T[0])
-        M_R[0] = np.mean(current_rankset, dtype=np.float64)
+        M_R[0] = np.mean(current_rankset, dtype=np.float128)
 
-        M_K_square[0] = np.mean(current_keyset**2, dtype=np.float64)
+        M_K_square[0] = np.mean(current_keyset**2, dtype=np.float128)
 
-        M_R_square[0] = np.mean(current_rankset**2, dtype=np.float64)
+        M_R_square[0] = np.mean(current_rankset**2, dtype=np.float128)
 
-        M_KR[0] = np.mean(current_keyset*current_rankset, dtype=np.float64)
+        M_KR[0] = np.mean(current_keyset*current_rankset, dtype=np.float128)
 
         nominator = (M_KR[0] - (M_K[0] * M_R[0]))**2
         denominator = M_K_square[0] - (M_K[0])**2
