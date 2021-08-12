@@ -82,7 +82,7 @@ def obtain_poisoning_keys(p, keyset, rankset):
     
 
     while len(poisoning_keys) < P:
-        print("Current status: " + len(poisoning_keys) + " out of " + str(P) + " poisoning keys generated")
+        print("Current status: " + str(len(poisoning_keys)) + " out of " + str(P) + " poisoning keys generated")
         # Partition the non-occupied keys into subsequences such that each subsequence consists of consecutive non-occupied keys;
         # Extract the endpoints of each subsequence and sort them to construct the new sequence of endpoints S(i), where i <= 2(n + j);
         
