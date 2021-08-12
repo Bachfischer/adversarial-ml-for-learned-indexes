@@ -135,9 +135,9 @@ def obtain_poisoning_keys(p, keyset, rankset):
             delta_S[i] = S[i+1] - S[i] 
 
             M_K[i] = M_K[i-1] + delta_S[i] / (n) 
-            print("M_K_square: ", M_K_square[i-1])
-            print("S[i]: ", S[i])
-            print("delta_S[i]: ", delta_S[i])
+            #print("M_K_square: ", M_K_square[i-1])
+            #print("S[i]: ", S[i])
+            #print("delta_S[i]: ", delta_S[i])
             M_K_square[i] = M_K_square[i-1] + ( (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
             
             M_R[i] = (n + 2) / 2
