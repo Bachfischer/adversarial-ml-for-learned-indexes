@@ -81,8 +81,8 @@ def obtain_poisoning_keys(p, keyset, rankset):
     poisoning_keys = set()
     
 
-    for j in range(P):
-        print("Current status: " + str(j) + " out of " + str(P) + " poisoning keys generated")
+    while len(poisoning_keys) < P:
+        print("Current status: " + len(poisoning_keys) + " out of " + str(P) + " poisoning keys generated")
         # Partition the non-occupied keys into subsequences such that each subsequence consists of consecutive non-occupied keys;
         # Extract the endpoints of each subsequence and sort them to construct the new sequence of endpoints S(i), where i <= 2(n + j);
         
@@ -113,16 +113,16 @@ def obtain_poisoning_keys(p, keyset, rankset):
         # Calculate M_K(1), M_R(1) etc.
         # insert first potential poisoning key
         current_keyset = np.append(keyset, S[0])
-        M_K[0] = np.mean(current_keyset)
+        M_K[0] = np.mean(current_keyset, dtype=np.float64)
 
         current_rankset = np.append(rankset, T[0])
-        M_R[0] = np.mean(current_rankset)
+        M_R[0] = np.mean(current_rankset, dtype=np.float64)
 
-        M_K_square[0] = np.mean(current_keyset**2)
+        M_K_square[0] = np.mean(current_keyset**2, dtype=np.float64)
 
-        M_R_square[0] = np.mean(current_rankset**2)
+        M_R_square[0] = np.mean(current_rankset**2, dtype=np.float64)
 
-        M_KR[0] = np.mean(current_keyset*current_rankset)
+        M_KR[0] = np.mean(current_keyset*current_rankset, dtype=np.float64)
 
         nominator = (M_KR[0] - (M_K[0] * M_R[0]))**2
         denominator = M_K_square[0] - (M_K[0])**2
@@ -133,10 +133,10 @@ def obtain_poisoning_keys(p, keyset, rankset):
             delta_S[i] = S[i+1] - S[i] 
 
             M_K[i] = M_K[i-1] + delta_S[i] / (n) 
-            #print(M_K_square[i-1])
-            #print(S[i])
-            #print(delta_S[i])
-            #print( (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
+            #print("M_K_square: ", M_K_square[i-1])
+            #print("S[i]: ", S[i])
+            #print("delta_S[i]: ", delta_S[i])
+            #print("RHS: ", (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) )
             M_K_square[i] = M_K_square[i-1] + (( 2 * S[i] + delta_S[i]) * delta_S[i]) / (n + 1) 
             
             M_R[i] = (n + 2) / 2
@@ -149,7 +149,7 @@ def obtain_poisoning_keys(p, keyset, rankset):
 
         # get argmax of items in L
         optimal_key_index = max(L.items(), key=operator.itemgetter(1))[0]
-        #print("Generated poisoning key: ", S[optimal_key_index])
+        print("Generated poisoning key: ", S[optimal_key_index])
         poisoning_keys.add(S[optimal_key_index])
     
     return poisoning_keys
