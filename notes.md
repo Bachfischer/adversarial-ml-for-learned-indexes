@@ -1,6 +1,6 @@
-35.223.10.44Connection to SOSD Benchmark Server (with n= 8 CPUs, e2-standard-8):
+Connection to SOSD Benchmark Server (with n= 8 CPUs, e2-standard-8):
 
-ssh -i .ssh/google_compute_engine bachfischer@35.223.10.44
+ssh -i .ssh/google_compute_engine bachfischer@34.135.6.190
 
 SSH access to GitHub:
 eval "$(ssh-agent -s)"
