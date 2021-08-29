@@ -1,4 +1,4 @@
-# learned-indexes-project
+# adversarial-ml-for-learned-indexes
 
 ## Overview
 
@@ -8,6 +8,7 @@ This repository contains experiments for the "Learned Indexes" research project 
 
 * `data/` -- Various datasets
 * `doc/` -- Documentation
+* `experimental-results/` -- Output from experimental evaluation using [SOSD](https://github.com/Bachfischer/SOSD/tree/develop)
 * `src/` -- Source code for experiments
 
 ## Contact
