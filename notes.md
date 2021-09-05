@@ -1,6 +1,6 @@
 Connection to SOSD Benchmark Server (with n= 8 CPUs, e2-standard-8):
 
-ssh -i .ssh/google_compute_engine bachfischer@34.133.229.167
+ssh -i .ssh/google_compute_engine bachfischer@130.211.197.90
 
 SSH access to GitHub:
 eval "$(ssh-agent -s)"
@@ -8,13 +8,12 @@ ssh-add ~/.ssh/sosd_benchmark
 git pull
 
 Configuration for SOSD Benchmark: e2-standard-8
+Configuration for SOSD Benchmark (LIPP-only): e2-standard-16 
+
 Configuration for Poisoning attack: c2-standard-30
 
 Query benchmark:
 `./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_10M --pareto --only ALEX`
-`./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_10M --pareto --only BTree`
-`./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_10M --pareto --only DPGM`
-
 
 Insertion benchmark:
 `./build/benchmark -r 1 ./data/books_200M_uint64 ./data/books_200M_uint64_equality_lookups_18M --inserts ./data/books_200M_uint64_inserts_2M --pareto --only DPGM`
