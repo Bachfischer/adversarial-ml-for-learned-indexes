@@ -2,6 +2,18 @@ import numpy as np
 import pandas as pd
 import struct
 
+"""
+Source: Scipy - https://github.com/scipy/scipy/blob/v1.7.0/scipy/stats/stats.py#L8631-L8737
+"""
+def rankdata(array):
+    #arr = np.ravel(np.asarray(array))
+    algo = 'mergesort'
+    sorter = np.argsort(array, kind=algo)
+
+    inv = np.empty(sorter.size, dtype=np.intp)
+    inv[sorter] = np.arange(sorter.size, dtype=np.intp)
+    return inv + 1
+
 
 def read_dataset(dataset_filename : str):
     keyset = np.fromfile("../data/" + dataset_filename, dtype=np.uint64)
@@ -20,18 +32,6 @@ def sort_dataset(dataset_filename : str):
         keyset_sorted.tofile(output_file)
     
     print("Wrote poisoned dataset " + str(dataset_filename) + " to disk")
-
-"""
-Source: Scipy - https://github.com/scipy/scipy/blob/v1.7.0/scipy/stats/stats.py#L8631-L8737
-"""
-def rankdata(array):
-    #arr = np.ravel(np.asarray(array))
-    algo = 'mergesort'
-    sorter = np.argsort(array, kind=algo)
-
-    inv = np.empty(sorter.size, dtype=np.intp)
-    inv[sorter] = np.arange(sorter.size, dtype=np.intp)
-    return inv + 1
 
 #sort_dataset("../data/poisoned_wiki_ts_200M_uint64")
 #sort_dataset("../data/poisoned_fb_200M_uint64")
